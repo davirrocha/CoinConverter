@@ -1,65 +1,68 @@
 const convertButton = document.querySelector(".button-convert")
 
 function diceConvert() {
-    const intupCurrency = document.querySelector(".input-value").value
+    const inputCurrency = parseFloat(document.querySelector(".input-value").value);
     const valueConvertion = document.querySelector("#real")
     const valueConvertionDolar = document.querySelector("#dolar")
     const realToday = 0.20
-    const dolarToday = 5.03
-    const euroToday = 5.44
+    const dolarToday = 4.97
+    const euroToday = 5.39
     const libraToday = 6.36
     const yenToday = 0.034
     const bitcoin = 3
+    const todayEuro = 1.08
+    const covertFrom = document.querySelector(".convert-from")
     const valueInput = document.querySelector(".convert-to")
+    const valueTo = document.querySelector(".covert-from")
     const imgValue = document.querySelector(".eua")
 
     valueConvertion.innerHTML = new Intl.NumberFormat("pt-BR", {
         style: "currency",
         currency: "BRL"
-    }).format(intupCurrency)
+    }).format(inputCurrency)
+
 
     if (valueInput.value == "real") {
         valueConvertionDolar.innerHTML = new Intl.NumberFormat("pt-BR", {
             style: "currency",
             currency: "BRL",
-        }).format(intupCurrency/realToday)
+        }).format(inputCurrency / realToday)
     }
- 
+
     if (valueInput.value == "dolar") {
         //Se o select estiver selecionado o valor de dolar, entre aqui
         valueConvertionDolar.innerHTML = new Intl.NumberFormat("en-IN", {
             style: "currency",
-            currency: "USD"
-        }).format(intupCurrency/dolarToday) //NÃO PODE DAR ESPAÇO
+            currency: "USD",
+        }).format(inputCurrency / dolarToday) //NÃO PODE DAR ESPAÇO
     }
 
     if (valueInput.value == "euro") {
-        //Se o select estiver selecionado o valor de dolar, entre aqui
         valueConvertionDolar.innerHTML = new Intl.NumberFormat("nl-BE", {
             style: "currency",
-            currency: "EUR"
-        }).format(intupCurrency/euroToday) //NÃO PODE DAR ESPAÇO
+            currency: "EUR",
+        }).format(inputCurrency / euroToday)
     }
 
     if (valueInput.value == "libra") {
         valueConvertionDolar.innerHTML = new Intl.NumberFormat("de-DE", {
             style: "currency",
             currency: "GBP",
-        }).format(intupCurrency/libraToday)
+        }).format(inputCurrency / libraToday)
     }
 
     if (valueInput.value == "bitcoin") {
         valueConvertionDolar.innerHTML = new Intl.NumberFormat("pt-BR", {
             style: "currency",
             currency: "BTC",
-        }).format(intupCurrency*bitcoin)
+        }).format(inputCurrency * bitcoin)
     }
 
     if (valueInput.value == "yen") {
         valueConvertionDolar.innerHTML = new Intl.NumberFormat("ja-JP", {
             style: "currency",
             currency: "JPY",
-        }).format(intupCurrency/yenToday)
+        }).format(inputCurrency / yenToday)
     }
 }
 
@@ -76,13 +79,13 @@ valorInput.addEventListener("change", function () {
     if (valorInput.value == "real") {
         nameCurrency.innerHTML = "Real"
         imgCurrency.src = "./assets/real.png"
-        
+
     }
 
     if (valorInput.value == "dolar") {
         nameCurrency.innerHTML = "Dólar Americano"
         imgCurrency.src = "./assets/dolar.png"
-        
+
     }
 
     if (valorInput.value == "euro") {
@@ -111,3 +114,52 @@ valorInput.addEventListener("change", function () {
     diceConvert()
 
 })
+
+
+
+const covertFrom = document.querySelector(".convert-from")
+const currencyName = document.querySelector("#name-moeda")
+const currencyImg = document.querySelector(".bra")
+
+covertFrom.addEventListener("change", function () {
+
+    if (covertFrom.value == "real") {
+        currencyName.innerHTML = "Real"
+        currencyImg.src = "./assets/real.png"
+
+    }
+
+    if (covertFrom.value == "dolar") {
+        currencyName.innerHTML = "Dolar"
+        currencyImg.src = "./assets/dolar.png"
+
+    }
+
+    if (covertFrom.value == "euro") {
+        currencyName.innerHTML = "Euro"
+        currencyImg.src = "./assets/euro.png"
+
+    }
+    if (covertFrom.value == "libra") {
+        currencyName.innerHTML = "Libra"
+        currencyImg.src = "./assets/libra.png"
+
+    }
+
+    if (covertFrom.value == "bitcoin") {
+        currencyName.innerHTML = "Bitcoin"
+        currencyImg.src = "./assets/bitcoin.png"
+
+    }
+
+    if (covertFrom.value == "yen") {
+        currencyName.innerHTML = "Yen"
+        currencyImg.src = "./assets/yen.png"
+
+    }
+    coinSelector()
+})
+
+
+
+
